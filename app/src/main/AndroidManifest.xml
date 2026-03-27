@@ -13,9 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kiemtra2AndroidPTIT">
         <activity
+            android:name=".view.activity.TicketActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.ShowtimeActivity"
             android:exported="false"
-            android:theme="@style/AppTheme"/>
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".view.activity.HomeActivity"
             android:exported="false"
