@@ -1,4 +1,4 @@
-﻿package com.btl_ptit.kiemtra2_android_ptit.database.entity;
+package com.btl_ptit.kiemtra2_android_ptit.database.entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 @Entity(tableName = "movies")

@@ -1,4 +1,4 @@
-﻿package com.btl_ptit.kiemtra2_android_ptit.database.entity;
+package com.btl_ptit.kiemtra2_android_ptit.database.entity;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 @Entity(tableName = "theaters")
@@ -12,6 +12,7 @@ public class Theater {
         this.address = address;
     }
 
+    public Theater(){};
     public int getId() {
         return id;
     }

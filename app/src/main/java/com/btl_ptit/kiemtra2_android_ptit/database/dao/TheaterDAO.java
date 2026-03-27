@@ -1,4 +1,4 @@
-﻿package com.btl_ptit.kiemtra2_android_ptit.database.dao;
+package com.btl_ptit.kiemtra2_android_ptit.database.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;

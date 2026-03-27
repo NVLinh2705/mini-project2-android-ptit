@@ -38,8 +38,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         Movie movie = movieArrayList.get(position);
         holder.movieTitleTxt.setText(movie.getTitle());
         holder.movieDescriptionTxt.setText(movie.getDescription());
+
         Glide.with(holder.itemView.getContext())
                 .load(movie.getImageUrl())
+                .fitCenter()
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_foreground)
                 .into(holder.movieImg);

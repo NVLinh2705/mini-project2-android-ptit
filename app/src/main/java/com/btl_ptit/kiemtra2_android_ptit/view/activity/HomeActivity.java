@@ -48,8 +48,8 @@ public class HomeActivity extends AppCompatActivity {
             binding.loginBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                    startActivity(intent);
                     Toast.makeText(HomeActivity.this,"click vao login",Toast.LENGTH_SHORT).show();
                 }
             });
@@ -66,8 +66,8 @@ public class HomeActivity extends AppCompatActivity {
         binding.theaterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(HomeActivity.this, TheaterActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(HomeActivity.this, TheaterActivity.class);
+                startActivity(intent);
                  Toast.makeText(HomeActivity.this,"click vao theater",Toast.LENGTH_SHORT).show();
             }
         });
@@ -75,8 +75,8 @@ public class HomeActivity extends AppCompatActivity {
         binding.showtimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(HomeActivity.this, ListShowtimeActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(HomeActivity.this, ShowtimeActivity.class);
+                startActivity(intent);
                 Toast.makeText(HomeActivity.this,"click vao showtime",Toast.LENGTH_SHORT).show();
             }
         });

@@ -52,7 +52,12 @@ public class MovieActivity extends AppCompatActivity implements ItemListener {
 
     @Override
     public <T> void onClick(ArrayList<T> list, View view, int position) {
-        // Xử lý khi click vào phim
+        if (list.get(position) instanceof Movie) {
+            Movie movie = (Movie) list.get(position);
+            android.content.Intent intent = new android.content.Intent(this, ShowtimeActivity.class);
+            intent.putExtra("movieId", movie.id);
+            startActivity(intent);
+        }
     }
 
     @Override
