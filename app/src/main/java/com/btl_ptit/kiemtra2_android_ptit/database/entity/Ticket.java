@@ -11,4 +11,6 @@ public class Ticket {
     public int userId;
     public int showtimeId;
     public int seat;
+
+    public double price;
 }
