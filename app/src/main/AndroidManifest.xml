@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kiemtra2AndroidPTIT">
         <activity
+            android:name=".view.activity.SeatActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activity.TicketActivity"
             android:exported="false" />
         <activity

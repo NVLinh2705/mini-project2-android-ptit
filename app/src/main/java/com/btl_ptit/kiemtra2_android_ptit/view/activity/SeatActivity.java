@@ -10,12 +10,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.btl_ptit.kiemtra2_android_ptit.R;
 
-public class TicketActivity extends AppCompatActivity {
+public class SeatActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_ticket);
+        setContentView(R.layout.activity_seat);
     }
 }
