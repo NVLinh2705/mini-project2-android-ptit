@@ -47,33 +47,55 @@ public class ShowtimeActivity extends AppCompatActivity implements ItemListener 
         int movieId = getIntent().getIntExtra("movieId", -1);
         if (movieId != -1) {
             loadShowtimesForMovie(movieId);
+        } else {
+            loadAllShowtimes();
         }
     }
 
     private void loadShowtimesForMovie(int movieId) {
         new Thread(() -> {
-            List<Movie> movies = db.movieDAO().getAllMovies();
-            for (Movie m : movies) {
-                movieMap.put(m.id, m);
-            }
-
-            List<Theater> theaters = db.theaterDAO().getAllTheaters();
-            for (Theater t : theaters) {
-                theaterMap.put(t.id, t);
-            }
-
+            loadMapData();
             List<Showtime> showtimes = db.showtimeDAO().getShowtimesByMovie(movieId);
-            runOnUiThread(() -> {
-                showtimeList.clear();
-                showtimeList.addAll(showtimes);
-                showtimeAdapter.notifyDataSetChanged();
-            });
+            updateUI(showtimes);
         }).start();
+    }
+
+    private void loadAllShowtimes() {
+        new Thread(() -> {
+            loadMapData();
+            List<Showtime> showtimes = db.showtimeDAO().getAllShowtimes();
+            updateUI(showtimes);
+        }).start();
+    }
+
+    private void loadMapData() {
+        List<Movie> movies = db.movieDAO().getAllMovies();
+        for (Movie m : movies) {
+            movieMap.put(m.id, m);
+        }
+
+        List<Theater> theaters = db.theaterDAO().getAllTheaters();
+        for (Theater t : theaters) {
+            theaterMap.put(t.id, t);
+        }
+    }
+
+    private void updateUI(List<Showtime> showtimes) {
+        runOnUiThread(() -> {
+            showtimeList.clear();
+            showtimeList.addAll(showtimes);
+            showtimeAdapter.notifyDataSetChanged();
+        });
     }
 
     @Override
     public <T> void onClick(ArrayList<T> list, View view, int position) {
-        // Handle booking click here
+        if (list.get(position) instanceof Showtime) {
+            Showtime showtime = (Showtime) list.get(position);
+            android.content.Intent intent = new android.content.Intent(this, TicketActivity.class);
+            intent.putExtra("showtimeId", showtime.id);
+            startActivity(intent);
+        }
     }
 
     @Override

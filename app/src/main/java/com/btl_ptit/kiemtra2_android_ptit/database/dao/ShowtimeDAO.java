@@ -15,4 +15,6 @@ public interface ShowtimeDAO {
     List<Showtime> getShowtimesByMovie(int movieId);
     @Query("SELECT * FROM showtimes")
     List<Showtime> getAllShowtimes();
+    @Query("SELECT * FROM showtimes WHERE id = :id")
+    Showtime getShowtimeById(int id);
 }

@@ -13,4 +13,6 @@ public interface TheaterDAO {
     void insertTheater(Theater theater);
     @Query("SELECT * FROM theaters")
     List<Theater> getAllTheaters();
+    @Query("SELECT * FROM theaters WHERE id = :id")
+    Theater getTheaterById(int id);
 }

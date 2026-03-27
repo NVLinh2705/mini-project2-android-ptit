@@ -25,7 +25,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import java.util.concurrent.Executors;
 import java.time.LocalDateTime;
 
-@Database(entities = {User.class, Movie.class, Theater.class, Showtime.class, Ticket.class}, version = 2, exportSchema = false)
+@Database(entities = {User.class, Movie.class, Theater.class, Showtime.class, Ticket.class}, version = 3, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     public abstract UserDAO userDAO();
@@ -52,6 +52,9 @@ public abstract class AppDatabase extends RoomDatabase {
                                 
                                 User user = new User("admin", "admin");
                                 database.userDAO().insertUser(user);
+
+                                User customUser = new User("user", "1234");
+                                database.userDAO().insertUser(customUser);
 
                                 Movie m1 = new Movie();
                                 m1.title = "Dune: Part Two";

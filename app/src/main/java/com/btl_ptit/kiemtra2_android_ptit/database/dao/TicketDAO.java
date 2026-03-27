@@ -11,4 +11,7 @@ public interface TicketDAO {
     void insertTicket(Ticket ticket);
     @Query("SELECT * FROM tickets WHERE id = :id")
     Ticket getTicket(int id);
+    
+    @Query("SELECT * FROM tickets WHERE showtimeId = :showtimeId")
+    java.util.List<Ticket> getTicketsByShowtime(int showtimeId);
 }

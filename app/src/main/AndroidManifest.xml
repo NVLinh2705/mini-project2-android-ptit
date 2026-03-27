@@ -14,8 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kiemtra2AndroidPTIT">
         <activity
+            android:name=".view.activity.InvoiceActivity"
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
+        <activity
             android:name=".view.activity.SeatActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/AppTheme"/>
         <activity
             android:name=".view.activity.TicketActivity"
             android:exported="false"

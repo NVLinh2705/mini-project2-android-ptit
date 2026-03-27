@@ -68,10 +68,14 @@ public class LoginActivity extends AppCompatActivity {
 //                            startActivity(intent);
 //                        } else {
                             // Mặc định về Home nếu không có yêu cầu cụ thể
-                            Intent intent = new Intent(this, HomeActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                            startActivity(intent);
-//                        }
+                            boolean isFromTicket = getIntent().getBooleanExtra("is_from_ticket", false);
+                            if (isFromTicket) {
+                                setResult(RESULT_OK);
+                            } else {
+                                Intent intent = new Intent(this, HomeActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                            }
                         finish();
                     } else {
                         Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
