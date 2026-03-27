@@ -1,21 +1,62 @@
 package com.btl_ptit.kiemtra2_android_ptit.view.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.btl_ptit.kiemtra2_android_ptit.R;
+import com.btl_ptit.kiemtra2_android_ptit.database.AppDatabase;
+import com.btl_ptit.kiemtra2_android_ptit.database.entity.Movie;
+import com.btl_ptit.kiemtra2_android_ptit.databinding.ActivityMovieBinding;
+import com.btl_ptit.kiemtra2_android_ptit.listener.ItemListener;
+import com.btl_ptit.kiemtra2_android_ptit.view.adapter.MovieAdapter;
 
-public class MovieActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MovieActivity extends AppCompatActivity implements ItemListener {
+
+    private ActivityMovieBinding binding;
+    private AppDatabase db;
+    private MovieAdapter movieAdapter;
+    private ArrayList<Movie> movieArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_movie);
+        binding = ActivityMovieBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
+        db = AppDatabase.getInstance(this);
+        
+
+        movieAdapter = new MovieAdapter(movieArrayList, this);
+        binding.recyclerViewMovie.setLayoutManager(new LinearLayoutManager(this));
+        binding.recyclerViewMovie.setAdapter(movieAdapter);
+
+
+        loadMovies();
+    }
+
+    private void loadMovies() {
+        new Thread(() -> {
+            List<Movie> list = db.movieDAO().getAllMovies();
+            runOnUiThread(() -> {
+                movieArrayList.clear();
+                movieArrayList.addAll(list);
+                movieAdapter.notifyDataSetChanged();
+            });
+        }).start();
+    }
+
+    @Override
+    public <T> void onClick(ArrayList<T> list, View view, int position) {
+        // Xử lý khi click vào phim
+    }
+
+    @Override
+    public <T> void onLongClick(ArrayList<T> list, View view, int position) {
+        // Xử lý khi nhấn giữ
     }
 }
